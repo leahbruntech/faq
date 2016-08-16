@@ -21,6 +21,12 @@ function LoadSettings(){
 	}else{
 		define('SITE_NAME', 'Gallery Manager');
 	}
+
+	if($origin_site_url = get_option('origin_site_url')){
+		define('ORIGIN_SITE_URL', $origin_site_url);
+	}else{
+		define('ORIGIN_SITE_URL', '');
+	}
 	
 	if($copyright = get_option('copyright')){
 		define('COPYRIGHT', $copyright);
@@ -123,6 +129,22 @@ function Urls($type = 'article', $object){
 			return BASE_URL . 'c/' . $object->url . '/';
 		}else{
 			return BASE_URL . 'category.php?id=' . $object->id;
+		}
+	}
+}
+
+function kirameUrl($type = 'article', $url, $id){
+	if($type == 'article'){
+		if(SEF_URLS === true){
+			return BASE_URL . 'a/' . $url . '/';
+		}else{
+			return BASE_URL . 'article.php?id=' . $id;
+		}
+	}else{
+		if(SEF_URLS === true){
+			return BASE_URL . 'c/' . $url . '/';
+		}else{
+			return BASE_URL . 'category.php?id=' . $id;
 		}
 	}
 }
@@ -413,14 +435,18 @@ function CreateSearchQuery($where, $columns){
 	
 function SearchSplitTerms($terms){
 
-	$terms = preg_replace("/\"(.*?)\"/e", "SearchTransformTerm('\$1')", $terms);
+	$terms = preg_replace_callback("/\"(.*?)\"/", function ($m) {
+              return SearchTransformTerm($m[1]);
+            }, $terms);
 	$terms = preg_split("/\s+|,/", $terms);
 
 	$out = array();
 
 	foreach($terms as $term){
 
-		$term = preg_replace("/\{WHITESPACE-([0-9]+)\}/e", "chr(\$1)", $term);
+		$term = preg_replace_callback("/\{WHITESPACE-([0-9]+)\}/", function ($m) {
+              return chr($m[1]);
+            }, $term);
 		$term = preg_replace("/\{COMMA\}/", ",", $term);
 
 		$out[] = $term;

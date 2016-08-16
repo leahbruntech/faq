@@ -1,6 +1,13 @@
 <?php
-session_start();
-$_SESSION['lang'] = (isset($_GET['lang']) && $_GET['lang'] != '') ? $_GET['lang'] : 'en';
+if (!isset($_SESSION)) {
+	session_start();
+}
+
+if (isset($_GET["lang"])) {
+    if (!isset($_SESSION["lang"]) || (isset($_SESSION["lang"]) && $_SESSION["lang"] != $_GET["lang"])) {
+        $_SESSION["lang"] = $_GET["lang"];
+    }
+}
 
 define('DB_NAME', 'help');
 
@@ -32,7 +39,7 @@ if ($_SESSION['lang'] == 'es') {
 define('TABLES_PREFIX', $tbl_prefix);
 
 /** Set to false when in production to suppress errors for users. */
-define('DEVELOPMENT', false);
+define('DEVELOPMENT', true);
 
 /** Webmaster's email */
 define('WEBMASTER_EMAIL', 'webmaster@email.com');

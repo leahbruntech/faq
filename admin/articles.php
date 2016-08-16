@@ -40,32 +40,37 @@ if(isset($_GET['message']) AND $_GET['message'] != ''){
 	}
 }
 
+$conn = new mysqli(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME);
+
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+} 
 
 $offset = ($page - 1) * $rows;
 if(isset($_GET['q']) AND $_GET['q']  != ''){
-	$posts = $db->get_results("SELECT * FROM " . TABLES_PREFIX . "posts WHERE ". CreateSearchQuery(clean($_GET['q']), array('title','body')) . " ORDER BY id DESC LIMIT $offset, $rows");
-	$number_of_records = count($db->get_results("SELECT * FROM " . TABLES_PREFIX . "posts WHERE " . CreateSearchQuery(clean($_GET['q']), array('title','body'))));
+	$posts = $conn->query("SELECT * FROM " . TABLES_PREFIX . "posts WHERE ". CreateSearchQuery(clean($_GET['q']), array('title','body')) . " ORDER BY id DESC LIMIT $offset, $rows");
+	$number_of_records = count($conn->query("SELECT * FROM " . TABLES_PREFIX . "posts WHERE " . CreateSearchQuery(clean($_GET['q']), array('title','body'))));
 }elseif(isset($_GET['category_id']) AND $_GET['category_id']  != ''){
-	$posts = $db->get_results("SELECT * FROM " . TABLES_PREFIX . "posts WHERE category_id = ".intval($_GET['category_id'])." ORDER BY id DESC LIMIT $offset, $rows");
-	$number_of_records = count($db->get_results("SELECT * FROM " . TABLES_PREFIX . "posts WHERE category_id = ".intval($_GET['category_id'])."" ));
+	$posts = $conn->query("SELECT * FROM " . TABLES_PREFIX . "posts WHERE category_id = ".intval($_GET['category_id'])." ORDER BY id DESC LIMIT $offset, $rows");
+	$number_of_records = count($conn->query("SELECT * FROM " . TABLES_PREFIX . "posts WHERE category_id = ".intval($_GET['category_id'])."" ));
 }else{
-	$posts = $db->get_results("SELECT * FROM " . TABLES_PREFIX . "posts ORDER BY id DESC LIMIT $offset, $rows");
-	$number_of_records = count($db->get_results("SELECT * FROM " . TABLES_PREFIX . "posts" ));
+	$posts = $conn->query("SELECT * FROM " . TABLES_PREFIX . "posts ORDER BY id DESC LIMIT $offset, $rows");
+	$number_of_records = count($conn->query("SELECT * FROM " . TABLES_PREFIX . "posts" ));
 }
 $number_of_pages = ceil( $number_of_records / $rows );
 
 $rows_html = '';
-if($posts){
-	foreach($posts as $post){
+if($number_of_records > 0){
+	while($row = $posts->fetch_assoc()) {
 		$row_layout = new Layout('../html/');
 		$row_layout->SetContentView('admin-articles-rows');
-		$row_layout->AddContentById('id', $post->id);
-		$row_layout->AddContentById('title', TrimText(stripslashes($post->title), 42));
+		$row_layout->AddContentById('id', $row["id"]);
+		$row_layout->AddContentById('title', TrimText(stripslashes($row["title"]), 42));
 		
-		$row_layout->AddContentById('likes', NiceNumber($post->likes));
-		$row_layout->AddContentById('views', NiceNumber($post->views));
+		$row_layout->AddContentById('likes', NiceNumber($row["likes"]));
+		$row_layout->AddContentById('views', NiceNumber($row["views"]));
 		
-		$row_layout->AddContentById('category_name', stripslashes($db->get_var("SELECT name FROM " . TABLES_PREFIX . "categories WHERE id = " . $post->category_id)));
+		$row_layout->AddContentById('category_name', stripslashes($db->get_var("SELECT name FROM " . TABLES_PREFIX . "categories WHERE id = " . $row["category_id"])));
 		
 		$rows_html .= $row_layout-> ReturnView();
 	}

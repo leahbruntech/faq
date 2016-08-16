@@ -5,8 +5,6 @@ if(defined('DEVELOPMENT') AND DEVELOPMENT == false){
 	error_reporting(E_ALL ^ E_NOTICE);
 }
 
-session_start();
-
 require_once "../php/ezSQL/shared/ez_sql_core.php";
 require_once "../php/ezSQL/ez_sql_pdo.php";
 require_once '../php/db.php';
