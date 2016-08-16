@@ -25,7 +25,7 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 } 
 
-$sql = "SELECT * FROM " . TABLES_PREFIX . "posts WHERE published = 'y' AND ". CreateSearchQuery(clean($_GET['q']), array('title','body')) . " ORDER BY likes DESC, title ASC LIMIT $offset, $rows";
+$sql = "SELECT ". TABLES_PREFIX . "posts.*, ". TABLES_PREFIX."categories.* FROM " . TABLES_PREFIX . "posts INNER JOIN ". TABLES_PREFIX . "categories ON ". TABLES_PREFIX ."posts.category_id=".TABLES_PREFIX."categories.id WHERE ".TABLES_PREFIX."posts.published = 'y' AND ". CreateSearchQuery(clean($_GET['q']), array(TABLES_PREFIX.'posts.title',TABLES_PREFIX.'posts.body', TABLES_PREFIX.'categories.name',)) . " ORDER BY ".TABLES_PREFIX."posts.likes DESC, ".TABLES_PREFIX."posts.title ASC LIMIT $offset, $rows";
 
 $posts = $conn->query($sql);
 
