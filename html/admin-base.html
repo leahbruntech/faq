@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>{{ID:header_title}} - {{ID:app_name}}</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="">
+<meta name="author" content="">
+
+<!-- Le styles -->
+<link href="../css/admin_bootstrap.css" rel="stylesheet">
+<link href="../css/admin_app.css" rel="stylesheet">
+<script src="../js/jquery.min.js"></script>
+<script src="../js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../js/tiny_mce/tiny_mce.js"></script>
+<!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+<!--[if lt IE 9]>
+<script src="../js/html5shiv.js"></script>
+<![endif]-->
+</head>
+<body>
+<div class="container  mi-container-main">
+<h1>{{ID:app_name}}</h1>
+<br/>
+<!--  start: menu.html -->
+<div class="navbar">
+	<div class="navbar-inner">
+		<ul class="nav">
+			<li class="dropdown">
+				<a href="#" class="dropdown-toggle" data-toggle="dropdown">Home<b class="caret"></b></a>
+				<ul class="dropdown-menu">
+					<li><a href="index.php">Admin Home</a></li>
+					<li><a href="../">App Home</a></li>
+				</ul>
+			</li>
+			<li class="divider-vertical"></li>
+			<li class="dropdown">
+				<a href="#" class="dropdown-toggle" data-toggle="dropdown">Categories<b class="caret"></b></a>
+				<ul class="dropdown-menu">
+					<li><a href="categories.php">Vew All</a></li>
+					<li><a href="categories_new.php">Add New</a></li>
+				</ul>
+			</li>
+			<li class="divider-vertical"></li>
+			<li class="dropdown">
+				<a href="#" class="dropdown-toggle" data-toggle="dropdown">Articles<b class="caret"></b></a>
+				<ul class="dropdown-menu">
+					<li><a href="articles.php">Vew All</a></li>
+					<li><a href="articles_new.php">Add New</a></li>
+				</ul>
+			</li>
+			<li class="divider-vertical"></li>
+			<li><a href="settings.php">Settings</a></li>
+			<li class="divider-vertical"></li>
+			<li><a href="signout.php">Signout</a></li>
+		</ul>
+	</div>
+</div>
+<br/>
+<!--  end: menu.html -->
+
+{{ID:content}}
+
+<hr>
+<p>{{ID:footer_copy}}</p>
+</div> <!-- /container -->
+</body>
+</html>

@@ -1,0 +1,45 @@
+<h2>{{ST:add_new_category}}</h2>
+<div style="clear: both;"></div>
+<br/>
+<div class="row">
+<div class="span12">
+{{ID:alert}}
+<form class="form-horizontal" action="categories_new.php" method="post">
+	
+	<div class="control-group">
+	<label class="control-label" for="input01">{{ST:category_name}}</label>
+	<div class="controls">
+	<input class="span4" id="name" type="text" name="name" value="{{ID:name}}">
+	</div>
+	</div>
+	
+	<div class="control-group">
+	<label class="control-label" for="input01">{{ST:short_description}}</label>
+	<div class="controls">
+	<input class="span4" id="description" type="text" name="description" value="{{ID:description}}">
+	</div>
+	</div>
+	
+	<div class="control-group">
+	<label class="control-label" for="input01">{{ST:parent_category}}</label>
+	<div class="controls">
+	<select class="span4" name="parent" id="parent">
+	<option value="0" {{ID:selected_category_0}}>{{ST:none}}</option>
+	{{ID:categories}}
+	</select>
+	</div>
+	</div>
+	
+	<div class="control-group">
+	<label class="control-label" for="input01">{{ST:order}}</label>
+	<div class="controls">
+	<input class="span4" id="order_by" type="text" name="order_by" value="{{ID:order_by}}">
+	</div>
+	</div>
+	
+	<div class="form-actions">
+		<button type="submit" class="btn btn-info" value="1" name="submit">{{ST:save_category}}</button>
+	</div>
+</form>
+</div>
+</div>

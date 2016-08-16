@@ -1,0 +1,46 @@
+.scroll_checkboxes {
+    height: 150px;
+    padding: 5px;
+    overflow: auto;
+    border: 1px solid #ccc;
+    background-color: #ffffff;
+    width: 50%;
+}
+
+body{
+background-image:url('../img/background1.jpg');
+background-repeat:no-repeat;
+background-color: #ffffff;
+-webkit-background-size: cover;
+-moz-background-size: cover;
+-o-background-size: cover;
+background-size: cover;
+}
+
+.mi-container-main{
+padding: 10px;
+margin-top: 10px;
+background-color: rgba(255,255,255,0.8);
+min-height: 700px;
+}
+
+.table{
+	background-color: #ffffff;
+}
+
+.form-actions{
+	background-color: rgba(255,255,255,0.0);
+}
+
+.accordion-toggle{
+	font-size: 18px;
+	font-weight: bold;
+}
+
+.accordion-toggle:hover{
+	text-decoration: none;
+}
+
+.frontend_home_piece{
+	
+}

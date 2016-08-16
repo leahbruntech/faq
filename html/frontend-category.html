@@ -1,0 +1,21 @@
+<h2 style="float: left;">{{ID:header_title}}</h2>
+<div style="float: right;">
+	<form class="form-inline" method="get" action="{{ID:base_url}}search.php">
+		<div class="input-append">
+			<input class="span2" id="appendedInputButton" type="text" placeholder="{{ST:search}}" name="q" value="{{ID:q}}">
+			<button class="btn" type="submit" value="1" submit="submit"><i class="icon-search"></i></button>
+		</div>
+	</form>
+</div>
+<div style="clear: both;"></div>
+<div class="row">
+<div class="span12">
+<h4>{{ST:subcategories}}</h4>
+<div class="well">
+	<div class="row" style="padding-left: 30px;">{{ID:subcategories}}</div>
+</div>
+<h4>{{ST:articles}}</h4>
+{{ID:rows}}
+{{ID:pagination}}
+</div>
+</div>

@@ -1,0 +1,96 @@
+<h2>{{ST:settings}}</h2>
+<div style="clear: both;"></div>
+<br/>
+<div class="row">
+<div class="span12">
+{{ID:alert}}
+<form class="form-horizontal" action="settings.php" method="post">
+	
+	<div class="control-group">
+	<label class="control-label" for="input01">{{ST:admin_username}}</label>
+	<div class="controls">
+	<input class="span4" id="admin_username" type="text" name="admin_username" value="{{ID:admin_username}}">
+	</div>
+	</div>
+	
+	<div class="control-group">
+	<label class="control-label" for="input01">{{ST:admin_email}}</label>
+	<div class="controls">
+	<input class="span4" id="admin_email" type="text" name="admin_email" value="{{ID:admin_email}}">
+	</div>
+	</div>
+	
+	<div class="control-group">
+	<label class="control-label" for="input01">{{ST:admin_password}}</label>
+	<div class="controls">
+	<input class="span2" id="admin_password" type="password" name="admin_password" placeholder="{{ST:newpassword}}">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	<input class="span2" id="admin_password_r" type="password" name="admin_password_r" placeholder="{{ST:repeatpassword}}">
+	</div>
+	</div>
+	
+	<div class="control-group">
+	<label class="control-label" for="input01">{{ST:site_name}}</label>
+	<div class="controls">
+	<input class="span4" id="site_name" type="text" name="site_name" value="{{ID:site_name}}">
+	</div>
+	</div>
+	
+	<div class="control-group">
+	<label class="control-label" for="input01">{{ST:copyright}}</label>
+	<div class="controls">
+	<input class="span4" id="copyright" type="text" name="copyright" value="{{ID:copyright}}">
+	</div>
+	</div>
+	
+	<div class="control-group">
+	<label class="control-label"></label>
+	<div class="controls">
+	<label class="checkbox inline">
+	<input type="checkbox" value="1" name="use_sef_urls"  {{ID:use_sef_urls_state}}/> {{ST:use_sef_urls}}
+	</label>
+	</div>
+	</div>
+	
+	<div class="control-group">
+	<label class="control-label" for="input01">{{ST:time_zone}}</label>
+	<div class="controls">
+	<input class="span4" id="time_zone" type="text" name="time_zone" value="{{ID:time_zone}}">
+	</div>
+	</div>
+	
+	<div class="control-group">
+	<label class="control-label" for="input01">{{ST:date_format}}</label>
+	<div class="controls">
+	<select class="span4" name="date_format" id="date_format">
+	{{ID:dates}}
+	</select>
+	</div>
+	</div>
+	
+	<div class="control-group">
+	<label class="control-label" for="input01">{{ST:rows_per_page}}</label>
+	<div class="controls">
+	<input class="span4" id="rows_per_page" type="text" name="rows_per_page" value="{{ID:rows_per_page}}">
+	</div>
+	</div>
+	
+	<div class="control-group">
+	<label class="control-label" for="input01">{{ST:base_path}}</label>
+	<div class="controls">
+	<input class="span4" id="base_path" type="text" name="base_path" value="{{ID:base_path}}">
+	</div>
+	</div>
+	
+	<div class="control-group">
+	<label class="control-label" for="input01">{{ST:base_url}}</label>
+	<div class="controls">
+	<input class="span4" id="base_url" type="text" name="base_url" value="{{ID:base_url}}">
+	</div>
+	</div>
+	
+	<div class="form-actions">
+		<button type="submit" class="btn btn-info" value="1" name="submit">{{ST:save_changes}}</button>
+	</div>
+</form>
+</div>
+</div>

@@ -1,0 +1,31 @@
+<h2 style="float: left;">{{ID:header_title}} <a href="articles_new.php" title="{{ST:add_new_article}}"><img src="../img/add.png" alt="{{ST:add_new_article}}"/></a></h2>
+<div style="float: right;">
+	<form class="form-inline" method="get" action="articles.php">
+		<div class="input-append">
+			<input class="span2" id="appendedInputButton" type="text" placeholder="{{ST:search}}" name="q" value="{{ID:q}}">
+			<button class="btn" type="submit" value="1" submit="submit"><i class="icon-search"></i></button>
+		</div>
+	</form>
+</div>
+<div style="clear: both;"></div>
+<br/>
+<div class="row">
+<div class="span12">
+{{ID:alert}}
+<table class="table table-hover table-bordered table-striped">
+<thead>
+<tr>
+<th>{{ST:article_name}}</th>
+<th style="text-align:center;" width="20%">{{ST:category}}</th>
+<th style="text-align:center;" width="10%">{{ST:likes}}</th>
+<th style="text-align:center;" width="10%">{{ST:views}}</th>
+<th style="text-align:center;" width="20%">{{ST:action}}</th>
+</tr>
+</thead>
+<tbody>
+{{ID:rows}}
+</tbody>
+</table>
+{{ID:pagination}}
+</div>
+</div>

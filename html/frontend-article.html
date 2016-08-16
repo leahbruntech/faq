@@ -1,0 +1,157 @@
+<h2 style="float: left;">{{ID:header_title}}</h2>
+<div style="float: right;">
+	<form class="form-inline" method="get" action="{{ID:base_url}}search.php">
+		<div class="input-append">
+			<input class="span2" id="appendedInputButton" type="text" placeholder="{{ST:search}}" name="q" value="{{ID:q}}">
+			<button class="btn" type="submit" value="1" submit="submit"><i class="icon-search"></i></button>
+		</div>
+	</form>
+</div>
+<div style="clear: both;"></div>
+<p style="float: left;"><img src="{{ID:base_url}}img/x_office_calendar.png" alt="{{ST:date_added}}"> {{ID:date}}</p>
+<p style="float: right;"><a onclick="javascript:window.open(this.href,'', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');return false;" href="https://plus.google.com/share?url={{ID:share}}" title="{{ST:share_google}}"><img src="{{ID:base_url}}img/glyphicons_346_google_plus.png" alt="{{ST:share_google}}" /></a>
+<a onclick="javascript:window.open(this.href,'', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');return false;" href="https://twitter.com/share?url={{ID:share}}" title="{{ST:share_twitter}}"><img src="{{ID:base_url}}img/glyphicons_322_twitter.png" alt="{{ST:share_twitter}}" /></a>
+<a onclick="javascript:window.open(this.href,'', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');return false;" href="http://www.facebook.com/sharer.php?u={{ID:share}}&t={{ID:header_title}}" title="{{ST:share_fb}}"><img src="{{ID:base_url}}img/glyphicons_320_facebook.png" alt="{{ST:share_fb}}" /></a>
+</p>
+<div style="clear: both;"></div>
+<div>
+{{ID:body}}
+</div>
+<br/>
+<p style="float: left;">
+<a href="" class="btn btn-info" id="likeButton"><i class="icon-thumbs-up  icon-white"></i> {{ST:helpful}}</a> {{ID:found_this_helpful}}
+</p>
+<p style="float: right;" class="hidden-phone">
+<a href="#myModalSingle" data-toggle="modal" class="btn"><i class="icon-envelope"></i> {{ST:questions}}</a>
+</p>
+<div style="clear: both;"></div>
+<br/>
+<div class="row">
+	<div class="span5 well" style="min-height: 200px;{{ID:related_categories_state}}">
+		<h4>{{ST:related_categories}}</h4>
+		{{ID:related_categories}}
+	</div>
+	<div class="span5 well{{ID:related_articles_offset}}" style="min-height: 200px;{{ID:related_articles_state}}">
+		<h4>{{ST:related_articles}}</h4>
+		{{ID:related_articles}}
+	</div>
+</div>
+<div class="row visible-phone">
+	<div class="span12">
+		<form class="form-horizontal" action="" method="post" id="contactForm2">
+		<h3>{{ST:ask_a_question}}</h3>
+		<div id="contactMsg2"></div>
+		<p><input type="text" class="span3" id="name2" name="name" placeholder="{{ST:your_name}}"></p>
+		<p><input type="text" class="span3" id="email2" name="email" placeholder="{{ST:your_email}}"></p>
+		<p><input type="text" class="span3" id="subject2" name="subject" placeholder="{{ST:subject}}"></p>
+		<p><textarea class="span5" rows="5" id="message2" name="message" placeholder="{{ST:message}}"></textarea></p>
+		<input type="hidden" name="link" value="{{ID:article_url}}"/>
+		<p><button href="" class="btn btn-primary" id="submit2" name="submit" type="submit">{{ST:send}}</button></p>
+		</form>
+	</div>
+</div>
+<form class="form-horizontal" action="" method="post" id="contactForm">
+<div id="myModalSingle" class="modal hide fade">
+	<div class="modal-header">
+		<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+		<h3>{{ST:ask_a_question}}</h3>
+	</div>
+	<div class="modal-body">
+		
+			<div id="contactMsg"></div>
+			<p><input type="text" class="span3" id="name" name="name" placeholder="{{ST:your_name}}"></p>
+			<p><input type="text" class="span3" id="email" name="email" placeholder="{{ST:your_email}}"></p>
+			<p><input type="text" class="span3" id="subject" name="subject" placeholder="{{ST:subject}}"></p>
+			<p><textarea class="span5" rows="5" id="message" name="message" placeholder="{{ST:message}}"></textarea></p>
+			<input type="hidden" name="link" value="{{ID:article_url}}"/>
+		
+	</div>
+	<div class="modal-footer">
+		<a href="" data-dismiss="modal" class="btn">{{ST:cancel}}</a>
+		<button href="" class="btn btn-primary" id="submit" name="submit" type="submit">{{ST:send}}</button>
+	</div>
+</div>
+</form>
+<script>	
+$(document).ready(function(){
+	
+	
+	var form = $("#contactForm");
+	
+	form.submit(function(){
+		if($("#name").val().length < 1 || $("#email").val().length < 1 || $("#subject").val().length < 1 || $("#message").val().length < 1){
+			$("#contactMsg").empty();
+			$("#contactMsg").append('<div class="alert alert-error"><a class="close" data-dismiss="alert">×</a><strong>{{ST:error}}!</strong> {{ST:all_field_required}}</div>');
+			return false;
+		}
+		
+		var filter = /^[a-zA-Z0-9]+[a-zA-Z0-9_.-]+[a-zA-Z0-9_-]+@[a-zA-Z0-9]+[a-zA-Z0-9.-]+[a-zA-Z0-9]+.[a-z]{2,4}$/;
+		if(!filter.test($("#email").val())){
+			$("#contactMsg").empty();
+			$("#contactMsg").append('<div class="alert alert-error"><a class="close" data-dismiss="alert">×</a><strong>{{ST:error}}!</strong> {{ST:invalid_email}}</div>');
+			return false;
+		}
+		
+		$('#submit').button('loading');
+		$.ajax({type:'POST', url: '{{ID:base_url}}send.php?id={{ID:id}}', data:form.serialize(), dataType: "json", success: function(res) {
+    				$('#submit').button('reset');
+    				if(res.status == 1){
+    					$("#contactMsg").empty();
+					$("#contactMsg").append('<div class="alert alert-success"><a class="close" data-dismiss="alert">×</a><strong>{{ST:success}}!</strong> '+ res.error +'</div>');
+				}else{
+    					$("#contactMsg").empty();
+					$("#contactMsg").append('<div class="alert alert-error"><a class="close" data-dismiss="alert">×</a><strong>{{ST:error}}!</strong> '+ res.error +'</div>');
+				}
+		}});
+		return false
+	});
+	
+	var form2 = $("#contactForm2");
+	
+	form2.submit(function(){
+		if($("#name2").val().length < 1 || $("#email2").val().length < 1 || $("#subject2").val().length < 1 || $("#message2").val().length < 1){
+			$("#contactMsg2").empty();
+			$("#contactMsg2").append('<div class="alert alert-error"><a class="close" data-dismiss="alert">×</a><strong>{{ST:error}}!</strong> {{ST:all_field_required}}</div>');
+			return false;
+		}
+		
+		var filter = /^[a-zA-Z0-9]+[a-zA-Z0-9_.-]+[a-zA-Z0-9_-]+@[a-zA-Z0-9]+[a-zA-Z0-9.-]+[a-zA-Z0-9]+.[a-z]{2,4}$/;
+		if(!filter.test($("#email2").val())){
+			$("#contactMsg2").empty();
+			$("#contactMsg2").append('<div class="alert alert-error"><a class="close" data-dismiss="alert">×</a><strong>{{ST:error}}!</strong> {{ST:invalid_email}}</div>');
+			return false;
+		}
+		
+		$('#submit2').button('loading');
+		$.ajax({type:'POST', url: '{{ID:base_url}}send.php?id={{ID:id}}', data:form2.serialize(), dataType: "json", success: function(res) {
+    				$('#submit2').button('reset');
+    				if(res.status == 1){
+    					$("#contactMsg2").empty();
+					$("#contactMsg2").append('<div class="alert alert-success"><a class="close" data-dismiss="alert">×</a><strong>{{ST:success}}!</strong> '+ res.error +'</div>');
+				}else{
+    					$("#contactMsg2").empty();
+					$("#contactMsg2").append('<div class="alert alert-error"><a class="close" data-dismiss="alert">×</a><strong>{{ST:error}}!</strong> '+ res.error +'</div>');
+				}
+		}});
+		return false
+	});
+	
+	$.get("{{ID:base_url}}token.php",function(txt){
+		form.append('<input type="hidden" name="ts" value="'+txt+'">');
+		form2.append('<input type="hidden" name="ts" value="'+txt+'">');
+	});
+	
+	
+	
+	
+	$("#likeButton").click(function(event) {
+  		event.preventDefault();
+  		$.get("{{ID:base_url}}like.php?id={{ID:id}}",function(txt){
+			if(txt.length > 1){
+				$("#found_this_helpful").empty();
+				$("#found_this_helpful").append(txt);
+			}
+		});
+	});
+});
+</script>

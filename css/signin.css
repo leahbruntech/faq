@@ -1,0 +1,56 @@
+body{
+background-image:url('../img/background2.jpg');
+background-repeat:no-repeat;
+-webkit-background-size: cover;
+-moz-background-size: cover;
+-o-background-size: cover;
+background-size: cover;
+}
+p{margin:0}
+html,body,#doc,#page-outer{height:100%}
+.signin-card{position:absolute;
+left:50%;
+width:838px;
+top:50%;
+height:328px;
+width:838px;
+margin:-154px 0 0 -418px
+}
+.signin-welcome-text{position:absolute;
+bottom:0;
+left:0;
+width:470px;
+padding:20px;
+font-size:20px;
+font-weight:300;
+line-height:22px;
+color:#eee;
+text-align:left;
+text-shadow:#000 0 1px 2px}
+.signin-signin{position:absolute;
+top:0;
+left:536px;}
+.signin-forgot{position:absolute;
+top:200px;
+left:536px;}
+.signin-container-full-forgot .signin-welcome-text{padding:0;
+bottom:50%}
+.signin-container-full-forgot .footer ul{width:838px;
+text-align:left;
+margin:0 auto}
+.signin-container .footer{position:absolute;
+bottom:30px;
+width:100%;
+color:#fff;
+text-align:center}
+
+@media (max-width: 770px) {
+.signin-welcome-text{display: none;}
+.signin-card{
+width:600px;
+}
+.signin-signin{
+left:300px;}
+.signin-forgot{
+left:300px;}
+}

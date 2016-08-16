@@ -1,0 +1,25 @@
+<script>
+$(document).ready(function() {
+var removed = 0;
+$('.signin-signin').popover({'placement':'top','trigger':'manual','title':'<span style="color:red;">{{ST:error}}</span>','content':'{{ST:the_details_are_not_correct}}'});
+$('.signin-signin').popover('show');
+$('#signin-username').focus(function() {
+  if(removed == 0){
+	$('.signin-signin').popover('destroy');
+	removed = 1;
+  }
+});
+$('#signin-password').focus(function() {
+  if(removed == 0){
+	$('.signin-signin').popover('destroy');
+	removed = 1;
+  }
+});
+$('#forgot-email').focus(function() {
+  if(removed == 0){
+	$('.signin-signin').popover('destroy');
+	removed = 1;
+  }
+});
+});
+</script>

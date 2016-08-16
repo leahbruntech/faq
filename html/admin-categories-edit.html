@@ -1,0 +1,74 @@
+<h2>{{ST:edit_category}}</h2>
+<div style="clear: both;"></div>
+<br/>
+<div class="row">
+<div class="span12">
+{{ID:alert}}
+<form class="form-horizontal" action="categories_edit.php?id={{ID:id}}" method="post">
+	
+	<div class="control-group">
+	<label class="control-label" for="input01">{{ST:category_name}}</label>
+	<div class="controls">
+	<input class="span4" id="name" type="text" name="name" value="{{ID:name}}">
+	</div>
+	</div>
+	
+	<div class="control-group">
+	<label class="control-label" for="input01">{{ST:short_description}}</label>
+	<div class="controls">
+	<input class="span4" id="description" type="text" name="description" value="{{ID:description}}">
+	</div>
+	</div>
+	
+	<div class="control-group">
+	<label class="control-label" for="input01">{{ST:parent_category}}</label>
+	<div class="controls">
+	<select class="span4" name="parent" id="parent">
+	<option value="0" {{ID:selected_category_0}}>{{ST:none}}</option>
+	{{ID:categories}}
+	</select>
+	</div>
+	</div>
+	
+	<div class="control-group">
+	<label class="control-label" for="input01">{{ST:order}}</label>
+	<div class="controls">
+	<input class="span4" id="order_by" type="text" name="order_by" value="{{ID:order_by}}">
+	</div>
+	</div>
+	
+	<div class="form-actions">
+		<button type="submit" class="btn btn-info" value="1" name="submit">{{ST:save_category}}</button>
+		<a class="btn btn-danger" href="#myModalSingle" data-toggle="modal">{{ST:delete}}</a>
+	</div>
+</form>
+</div>
+</div>
+<div id="myModalSingle" class="modal hide fade">
+	<div class="modal-header">
+		<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+		<h3>{{ST:delete_category}}</h3>
+	</div>
+	<div class="modal-body">
+		<form class="form-horizontal" action="categories_edit.php" method="get">
+			<input type="hidden" value="{{ID:id}}" name="id"/>
+			<p>
+				<input type="radio" name="option" value="everything" checked>
+				{{ST:delete_subcategories}}
+			</p>
+			<p>
+				<input type="radio" name="option" value="assign_to">
+				{{ST:move_subcategories}}
+				<select class="span2" name="new_parent">
+				{{ID:categories}}
+				</select>
+			</p>
+			<br/>
+			<div class="control-group">
+				<div class="controls">
+					<button type="submit" class="btn btn-danger" name="delete" value="1">{{ST:delete}}</button> <a class="btn" data-dismiss="modal">{{ST:cancel}}</a>
+				</div>
+			</div>
+		</form>
+	</div>
+</div>

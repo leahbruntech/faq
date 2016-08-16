@@ -1,0 +1,73 @@
+<h2>{{ID:header_title}}</h2>
+<div class="row">
+<div class="span12">
+{{ID:alert}}
+<form class="form-horizontal" action="articles_new.php" method="post">
+	
+	<div class="control-group">
+	<label class="control-label" for="input01">{{ST:article_title}}</label>
+	<div class="controls">
+	<input class="span5" id="name" type="text" name="title" value="{{ID:title}}">
+	</div>
+	</div>
+	
+	<div class="control-group">
+	<label class="control-label" for="input01">{{ST:category}}</label>
+	<div class="controls">
+	<select class="span5" name="category" id="category">
+	<option value="">{{ST:select}}</option>
+	{{ID:categories}}
+	</select>
+	</div>
+	</div>
+	
+	<div class="control-group">
+	<label class="control-label" for="input01">{{ST:article_body}}</label>
+	<div class="controls">
+	<textarea class="span9" rows="16" name="body" id="body">{{ID:body}}</textarea>
+<script type="text/javascript">
+tinyMCE.init({
+	mode: "exact",
+	elements : "body",
+	theme : "advanced",
+	plugins : "emotions,spellchecker,advhr,insertdatetime,preview", 
+	theme_advanced_buttons1 : "bold,italic,underline,link,unlink,image,bullist,numlist,cut,copy,paste,code,formatselect,fontsizeselect",
+	convert_urls : false,
+	relative_urls : false,
+	document_base_url : "{{ID:base_url}}"
+});
+</script>
+	</div>
+	</div>
+	
+	<div class="control-group">
+	<label class="control-label" for="desrciption">{{ST:related_categories}}</label>
+	<div class="controls">
+	<div class="scroll_checkboxes">
+	{{ID:related_categories}}
+	</div>
+	</div>
+	</div>
+	
+	<div class="control-group">
+	<label class="control-label" for="desrciption">{{ST:related_articles}}</label>
+	<div class="controls">
+	<div class="scroll_checkboxes">
+	{{ID:related_articles}}
+	</div>
+	</div>
+	</div>
+	
+	<div class="control-group">
+	<label class="control-label" for="input01"></label>
+	<div class="controls">
+	<label for="publish"><input type="checkbox" value="1" id="publish" name="publish"  {{ID:publish_state}}/> {{ST:publish}}</label>
+	</div>
+	</div>
+	
+	<div class="form-actions">
+		<button type="submit" class="btn btn-info" value="1" name="submit">{{ST:save_article}}</button>
+	</div>
+</form>
+</div>
+</div>

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Help and Support Articles - User Guide</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="">
+<meta name="author" content="">
+
+<!-- Le styles -->
+<link href="css/admin_bootstrap.css" rel="stylesheet">
+<link href="css/app.css" rel="stylesheet">
+
+<!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+<!--[if lt IE 9]>
+<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+</head>
+
+<body>
+
+<div class="container">
+	<h1><a href="index.php">Help and Support Articles</a></h1>
+	<p>User driven knowledge base</p>
+	<ul class="breadcrumb">
+    <li class="active">User Guide</li>
+    </ul>
+	<div class="row">
+		
+		<!-- MainContent -->
+		<div class="span12">
+			<p>Created By: <b>Robert Nduati</b> , Email: <a href="mailto:robertnduati.karanja@gmail.com">robertnduati.karanja@gmail.com</a></p>
+			<br/>
+			<h2>About</h2>
+			<p>Give your users a great experience with your website or application and save time and money in the process.</p>
+		<br/>
+		<h2>Features:</h2>
+		<ul>
+			<li>Nested catgeories that are easy to navigate.</li>
+			<li>Users can like articles and these are used to order the articles in listings and search reasults so that well liked and helpful articles are first.</li>
+			<li>Easy to redesign since the HTML/CSS is separated from the PHP and is built using the twitter bootstrap</li>
+			<li>Facebook, Twitter, and Google+ share buttons.</li>
+			<li>Search Engine friendly Urls.</li>
+			<li>Contact forms are integrated to each articles for the user to use when they need clarification.</li>
+			<li>All the text is in one file making this script very easy to translate.</li>
+			<li>You can define realtionships between articles and other articles and categories making it even easier for users tofind what they need.</li>
+		</ul>
+		<br/>
+		<h2>Installation:</h2>
+		<ol>
+		<li>Unzip the package</li>
+		<li>Open the file /php/config.php with a text editor and put in the details for your server</li>
+		<li>Navigate to the script install.php using your browser</li>
+		<li>An admin account is created with the following credetials:<br/>
+		<b>Username:</b> admin<br/>
+		<b>Password:</b> pass</li>
+		<li>Delete the file install.php</li>
+		</ol>
+		
+		<h2>Getting Started:</h2>
+		<p>Sign in and click on the <b>Settings</b> menu. All the settings have been initialized but you will need to change the time zone and admin email. Also change the password to something secure.</p>
+		<p>The script is basically a sepecialized blog or wiki. You will need to create categories by clicking in the Categories menu and then create articles to be place in these categories by clicking on the Articles menu.</p>
+		<br/>
+		
+		<h2>Translating the script:</h2>
+		<p>To translate this script from English to any other language:</p>
+		<ol>
+		<li>Open the file /str/strings.xml using a text editor</li>
+		<li>You will find all the text that appears on all the page there. Simply translate them one by one</li>
+		</ol>
+		
+		<br/>
+		
+		<h2>Redesigning the look of the site:</h2>
+		<p>Even though the whole script is built on bootstrap, I have duplicated the css so that the admin and frontend are separate. This is ment to allow you the quickly change the frontend and not bother with the admin.</p>
+		<p>The CSS is in the folder css and the HTML is in the folder HTML. The files for the frontend start with frontend_ and for the admin start with admin_</p>
+		<p>The files that yo will want to start with are frontend_base.html and admin_base.html. Modifying the two files affects all the pages in the repective sections.</p>
+		
+		</div><!--/span-->
+		
+
+	</div><!--/row-->
+	<hr>
+	<footer>
+		<p>&copy; Help and Support Articles 2012</p>
+	</footer>
+</div><!--/.fluid-container-->
+<!-- Le javascript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="js/jquery.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+</body>
+</html>

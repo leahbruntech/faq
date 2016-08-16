@@ -1,0 +1,25 @@
+<script>
+$(document).ready(function() {
+var removed = 0;
+$('.signin-forgot').popover({'placement':'top','trigger':'manual','title':'<span style="color:green;">{{ST:success}}</span>','content':'{{ST:new_password_has_been_sent}}'});
+$('.signin-forgot').popover('show');
+$('#signin-username').focus(function() {
+  if(removed == 0){
+	$('.signin-forgot').popover('destroy');
+	removed = 1;
+  }
+});
+$('#signin-password').focus(function() {
+  if(removed == 0){
+	$('.signin-forgot').popover('destroy');
+	removed = 1;
+  }
+});
+$('#forgot-email').focus(function() {
+  if(removed == 0){
+	$('.signin-forgot').popover('destroy');
+	removed = 1;
+  }
+});
+});
+</script>
