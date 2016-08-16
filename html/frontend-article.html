@@ -14,11 +14,11 @@
 <a href="" class="btn btn-info" id="likeButton"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i> {{ST:helpful}}</a> {{ID:found_this_helpful}}
 </p>
 <p style="float: right;" class="hidden-phone">
-<a href="#myModalSingle" data-toggle="modal" class="btn"><i class="icon-envelope"></i> {{ST:questions}}</a>
+<a data-target="#myModalSingle" data-toggle="modal" class="btn btn-info"><i class="fa fa-envelope-o" aria-hidden="true"></i> {{ST:questions}}</a>
 </p>
 <div style="clear: both;"></div>
-<br/>
-<div class="row">
+
+<div class="row related-articles">
 	<div class="col-md-6 " style="min-height: 200px;{{ID:related_categories_state}}">
 		<h4>{{ST:related_categories}}</h4>
 		{{ID:related_categories}}
@@ -28,7 +28,7 @@
 		{{ID:related_articles}}
 	</div>
 </div>
-<div class="row visible-phone">
+<div class="row visible-phone hidden">
 	<div class="span12">
 		<form class="form-horizontal" action="" method="post" id="contactForm2">
 		<h3>{{ST:ask_a_question}}</h3>
@@ -42,25 +42,44 @@
 		</form>
 	</div>
 </div>
-<form class="form-horizontal" action="" method="post" id="contactForm">
-<div id="myModalSingle" class="modal hide fade">
-	<div class="modal-header">
-		<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-		<h3>{{ST:ask_a_question}}</h3>
-	</div>
-	<div class="modal-body">
-		
-			<div id="contactMsg"></div>
-			<p><input type="text" class="span3" id="name" name="name" placeholder="{{ST:your_name}}"></p>
-			<p><input type="text" class="span3" id="email" name="email" placeholder="{{ST:your_email}}"></p>
-			<p><input type="text" class="span3" id="subject" name="subject" placeholder="{{ST:subject}}"></p>
-			<p><textarea class="span5" rows="5" id="message" name="message" placeholder="{{ST:message}}"></textarea></p>
-			<input type="hidden" name="link" value="{{ID:article_url}}"/>
-		
-	</div>
-	<div class="modal-footer">
-		<a href="" data-dismiss="modal" class="btn">{{ST:cancel}}</a>
-		<button href="" class="btn btn-primary" id="submit" name="submit" type="submit">{{ST:send}}</button>
+<div id="myModalSingle" class="modal fade" role="dialog">
+	<div class="modal-dialog">
+		<div class="modal-content">
+		<form class="form-horizontal" action="" method="post" id="contactForm">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+				<h3>{{ST:ask_a_question}}</h3>
+			</div>
+			<div class="modal-body contact-form">
+				<div id="contactMsg"></div>
+				<div class="row">
+					<div class="col-md-12">
+						<input type="text" class="form-control" id="name" name="name" placeholder="{{ST:your_name}}">
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-12">
+						<input type="text" class="form-control" id="email" name="email" placeholder="{{ST:your_email}}">
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-12">
+						<input type="text" class="form-control" id="subject" name="subject" placeholder="{{ST:subject}}">
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-12">
+						<textarea class="form-control" rows="5" id="message" name="message" placeholder="{{ST:message}}"></textarea>
+					</div>
+				</div>
+				<input type="hidden" name="link" value="{{ID:article_url}}"/>
+			</div>
+			<div class="modal-footer">
+				<a href="" data-dismiss="modal" class="btn">{{ST:cancel}}</a>
+				<button href="" class="btn btn-primary" id="submit" name="submit" type="submit">{{ST:send}}</button>
+			</div>
+		</form>
+		</div>
 	</div>
 </div>
-</form>
+

@@ -105,7 +105,7 @@ $layout->RenderViewAndExit(false);
 $(document).ready(function(){
 	
 	var form = $("#contactForm");
-	var $id_value = 2;
+	var $id_value = <?php echo $_GET['id']; ?>;
 	
 	form.submit(function(){
 		if($("#name").val().length < 1 || $("#email").val().length < 1 || $("#subject").val().length < 1 || $("#message").val().length < 1){

@@ -10,6 +10,20 @@ body{
 	background: #F5F5F5;
 }
 
+.contact-form input,
+.contact-form textarea {
+	border-radius: 0;
+	margin-bottom: 5px;
+}
+.related-articles {
+	border-top: 1px solid lightgray;
+	margin-top: 50px;
+}
+
+.related-articles .col-md-6 {
+	margin-top: 10px;
+}
+
 #appendedInputButton {
 	border-radius: 0;
 	border: 0;
@@ -19,12 +33,19 @@ body{
 .lighted {
 	color: #CACCCD;
 }
+
+a {
+	color: #37A044;
+}
+
 a:hover {
 	text-decoration: none;
+	color: #37A044;
+	opacity: 0.8;
 }
 
 .search-header {
-	background-image:url('../img/background1.jpg');
+	background-image:url('../img/background2.jpg');
 	background-repeat:no-repeat;
 	background-color: #ffffff;
 	-webkit-background-size: cover;
