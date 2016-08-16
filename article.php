@@ -30,7 +30,7 @@ $next_cat = intval($post->category_id);
 while($end == false AND $loops < 10){
 	$category = $db->get_row("SELECT * FROM " . TABLES_PREFIX . "categories WHERE id = $next_cat ORDER BY id DESC LIMIT 0,1");
 	if($category){
-		$breadcrumbs = '<li><a href="'.Urls('category', $category).'">'.stripslashes($category->name).'</a> <span class="divider">/</span> </li> ' . $breadcrumbs;
+		$breadcrumbs = '<li><a href="'.Urls('category', $category).'">'.stripslashes($category->name).'</a> <span class="divider"></span> </li> ' . $breadcrumbs;
 		$next_cat = intval($category->parent);
 		if(intval($category->parent) == 0){
 			$end = true;
@@ -41,7 +41,7 @@ while($end == false AND $loops < 10){
 	$loops = $loops + 1;
 }
 
-$layout->AddContentById('breadcrumbs', ' <li><a href="'.BASE_URL.'">{{ST:home}}</a> <span class="divider">/</span> </li> ' . $breadcrumbs);
+$layout->AddContentById('breadcrumbs', ' <li><a href="'.BASE_URL.'">{{ST:home}}</a> <span class="divider"></span> </li> ' . $breadcrumbs);
 
 $layout->AddContentById('id', $post->id);
 $layout->AddContentById('body', make_clickable(stripslashes($post->body)));

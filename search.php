@@ -7,7 +7,7 @@ $layout = FrontendPageLayout('frontend-search');
 $layout->AddContentById('header_title', '{{ST:search}}: ' . $_GET['q']);
 $layout->AddContentById('q', $_GET['q']);
 
-$layout->AddContentById('breadcrumbs', ' <li><a href="'.BASE_URL.'">{{ST:home}}</a> <span class="divider">/</span> </li><li class="active">{{ST:search}}: '.$_GET['q'].'</li>');
+$layout->AddContentById('breadcrumbs', ' <li><a href="'.BASE_URL.'">{{ST:home}}</a> <span class="divider"></span> </li><li class="active">{{ST:search}}: '.$_GET['q'].'</li>');
 
 if(isset($_GET['page'])){
 	$page = intval($_GET['page']);

@@ -35,7 +35,7 @@ $next_cat = intval($category->parent);
 while($end == false AND $loops < 10){
 	$categoryx = $db->get_row("SELECT * FROM " . TABLES_PREFIX . "categories WHERE id = $next_cat ORDER BY id DESC LIMIT 0,1");
 	if($categoryx){
-		$breadcrumbs = '<li><a href="'.Urls('category', $categoryx).'">'.stripslashes($categoryx->name).'</a> <span class="divider">/</span> </li> ' . $breadcrumbs;
+		$breadcrumbs = '<li><a href="'.Urls('category', $categoryx).'">'.stripslashes($categoryx->name).'</a> <span class="divider"></span> </li> ' . $breadcrumbs;
 		$next_cat = intval($categoryx->parent);
 		if(intval($categoryx->parent) == 0){
 			$end = true;
@@ -46,7 +46,7 @@ while($end == false AND $loops < 10){
 	$loops = $loops + 1;
 }
 
-$layout->AddContentById('breadcrumbs', ' <li><a href="'.BASE_URL.'">{{ST:home}}</a> <span class="divider">/</span> </li> ' . $breadcrumbs);
+$layout->AddContentById('breadcrumbs', ' <li><a href="'.BASE_URL.'">{{ST:home}}</a> <span class="divider"></span> </li> ' . $breadcrumbs);
 
 $categories = $db->get_results("SELECT * FROM " . TABLES_PREFIX . "categories WHERE parent = $id ORDER BY order_by ASC, name ASC");
 
