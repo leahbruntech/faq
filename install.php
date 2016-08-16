@@ -1,5 +1,9 @@
 <?php
 
+echo 'HAHAHAHAHAHA! Bring me some food for overtime! :D';
+
+exit();
+
 error_reporting(E_ALL ^ E_NOTICE);
 
 require 'db_install.php';

@@ -1,5 +1,4 @@
 <?php
-
 require 'includes.php';
 
 $layout = FrontendPageLayout('frontend-home');

@@ -1,4 +1,7 @@
 <?php
+session_start();
+$_SESSION['lang'] = (isset($_GET['lang']) && $_GET['lang'] != '') ? $_GET['lang'] : 'en';
+
 define('DB_NAME', 'help');
 
 /** MySQL database username */
@@ -17,7 +20,16 @@ define('DB_CHARSET', 'utf8');
 define('DB_COLLATE', '');
 
 /** The Database Collate type. Don't change this if in doubt. */
-define('TABLES_PREFIX', 'help_');
+
+$tbl_prefix = 'help_';
+
+if ($_SESSION['lang'] == 'es') {
+	$tbl_prefix = 'es_help_';
+} elseif ($_SESSION['lang'] == 'pt') {
+	$tbl_prefix = 'pt_help_';
+}
+
+define('TABLES_PREFIX', $tbl_prefix);
 
 /** Set to false when in production to suppress errors for users. */
 define('DEVELOPMENT', false);
