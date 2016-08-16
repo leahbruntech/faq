@@ -54,6 +54,8 @@
 <string name="views">Views</string>
 <string name="likes">Likes</string>
 <string name="search">Search</string>
+<string name="frontend_search">Search for anything (booking a place, getting paid, reviews)</string>
+<string name="frontend_welcome">﻿Welcome! How can we help?</string>
 <string name="no_items_match_search">No items match search</string>
 <string name="articles_in_category">Articles in Category</string>
 <string name="publish">Publish?</string>

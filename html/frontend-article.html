@@ -1,13 +1,4 @@
 <h2 style="float: left;">{{ID:header_title}}</h2>
-<div style="float: right;">
-	<form class="form-inline" method="get" action="{{ID:base_url}}search.php">
-		<div class="input-append">
-			<input class="span2 form-control" id="appendedInputButton" type="text" placeholder="{{ST:search}}" name="q" value="{{ID:q}}">
-			<button class="btn btn-default" type="submit" value="1" submit="submit">
-			<i class="fa fa-search" aria-hidden="true"></i></button>
-		</div>
-	</form>
-</div>
 <div style="clear: both;"></div>
 <p style="float: left;"><img src="{{ID:base_url}}img/x_office_calendar.png" alt="{{ST:date_added}}"> {{ID:date}}</p>
 <p style="float: right;"><a onclick="javascript:window.open(this.href,'', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');return false;" href="https://plus.google.com/share?url={{ID:share}}" title="{{ST:share_google}}"><img src="{{ID:base_url}}img/glyphicons_346_google_plus.png" alt="{{ST:share_google}}" /></a>
@@ -20,7 +11,7 @@
 </div>
 <br/>
 <p style="float: left;">
-<a href="" class="btn btn-info" id="likeButton"><i class="icon-thumbs-up  icon-white"></i> {{ST:helpful}}</a> {{ID:found_this_helpful}}
+<a href="" class="btn btn-info" id="likeButton"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i> {{ST:helpful}}</a> {{ID:found_this_helpful}}
 </p>
 <p style="float: right;" class="hidden-phone">
 <a href="#myModalSingle" data-toggle="modal" class="btn"><i class="icon-envelope"></i> {{ST:questions}}</a>
@@ -28,11 +19,11 @@
 <div style="clear: both;"></div>
 <br/>
 <div class="row">
-	<div class="span5 well" style="min-height: 200px;{{ID:related_categories_state}}">
+	<div class="col-md-6 " style="min-height: 200px;{{ID:related_categories_state}}">
 		<h4>{{ST:related_categories}}</h4>
 		{{ID:related_categories}}
 	</div>
-	<div class="span5 well{{ID:related_articles_offset}}" style="min-height: 200px;{{ID:related_articles_state}}">
+	<div class="col-md-6 {{ID:related_articles_offset}}" style="min-height: 200px;{{ID:related_articles_state}}">
 		<h4>{{ST:related_articles}}</h4>
 		{{ID:related_articles}}
 	</div>
@@ -73,85 +64,3 @@
 	</div>
 </div>
 </form>
-<script>
-$(document).ready(function(){
-	
-	var form = $("#contactForm");
-	
-	form.submit(function(){
-		if($("#name").val().length < 1 || $("#email").val().length < 1 || $("#subject").val().length < 1 || $("#message").val().length < 1){
-			$("#contactMsg").empty();
-			$("#contactMsg").append('<div class="alert alert-error"><a class="close" data-dismiss="alert">×</a><strong>{{ST:error}}!</strong> {{ST:all_field_required}}</div>');
-			return false;
-		}
-		
-		var filter = /^[a-zA-Z0-9]+[a-zA-Z0-9_.-]+[a-zA-Z0-9_-]+@[a-zA-Z0-9]+[a-zA-Z0-9.-]+[a-zA-Z0-9]+.[a-z]{2,4}$/;
-		if(!filter.test($("#email").val())){
-			$("#contactMsg").empty();
-			$("#contactMsg").append('<div class="alert alert-error"><a class="close" data-dismiss="alert">×</a><strong>{{ST:error}}!</strong> {{ST:invalid_email}}</div>');
-			return false;
-		}
-		
-		$('#submit').button('loading');
-		$.ajax({type:'POST', url: '{{ID:base_url}}send.php?id={{ID:id}}', data:form.serialize(), dataType: "json", success: function(res) {
-    				$('#submit').button('reset');
-    				if(res.status == 1){
-    					$("#contactMsg").empty();
-					$("#contactMsg").append('<div class="alert alert-success"><a class="close" data-dismiss="alert">×</a><strong>{{ST:success}}!</strong> '+ res.error +'</div>');
-				}else{
-    					$("#contactMsg").empty();
-					$("#contactMsg").append('<div class="alert alert-error"><a class="close" data-dismiss="alert">×</a><strong>{{ST:error}}!</strong> '+ res.error +'</div>');
-				}
-		}});
-		return false
-	});
-	
-	var form2 = $("#contactForm2");
-	
-	form2.submit(function(){
-		if($("#name2").val().length < 1 || $("#email2").val().length < 1 || $("#subject2").val().length < 1 || $("#message2").val().length < 1){
-			$("#contactMsg2").empty();
-			$("#contactMsg2").append('<div class="alert alert-error"><a class="close" data-dismiss="alert">×</a><strong>{{ST:error}}!</strong> {{ST:all_field_required}}</div>');
-			return false;
-		}
-		
-		var filter = /^[a-zA-Z0-9]+[a-zA-Z0-9_.-]+[a-zA-Z0-9_-]+@[a-zA-Z0-9]+[a-zA-Z0-9.-]+[a-zA-Z0-9]+.[a-z]{2,4}$/;
-		if(!filter.test($("#email2").val())){
-			$("#contactMsg2").empty();
-			$("#contactMsg2").append('<div class="alert alert-error"><a class="close" data-dismiss="alert">×</a><strong>{{ST:error}}!</strong> {{ST:invalid_email}}</div>');
-			return false;
-		}
-		
-		$('#submit2').button('loading');
-		$.ajax({type:'POST', url: '{{ID:base_url}}send.php?id={{ID:id}}', data:form2.serialize(), dataType: "json", success: function(res) {
-    				$('#submit2').button('reset');
-    				if(res.status == 1){
-    					$("#contactMsg2").empty();
-					$("#contactMsg2").append('<div class="alert alert-success"><a class="close" data-dismiss="alert">×</a><strong>{{ST:success}}!</strong> '+ res.error +'</div>');
-				}else{
-    					$("#contactMsg2").empty();
-					$("#contactMsg2").append('<div class="alert alert-error"><a class="close" data-dismiss="alert">×</a><strong>{{ST:error}}!</strong> '+ res.error +'</div>');
-				}
-		}});
-		return false
-	});
-	
-	$.get("{{ID:base_url}}token.php",function(txt){
-		form.append('<input type="hidden" name="ts" value="'+txt+'">');
-		form2.append('<input type="hidden" name="ts" value="'+txt+'">');
-	});
-	
-	
-	
-	
-	$("#likeButton").click(function(event) {
-  		event.preventDefault();
-  		$.get("{{ID:base_url}}like.php?id={{ID:id}}",function(txt){
-			if(txt.length > 1){
-				$("#found_this_helpful").empty();
-				$("#found_this_helpful").append(txt);
-			}
-		});
-	});
-});
-</script>

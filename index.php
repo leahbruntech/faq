@@ -39,7 +39,7 @@ if($categories){
 		$posts_html = '';
 		if($posts){
 			foreach($posts as $p){
-				$posts_html .= '<p><a title="'.stripslashes($p->title).'" href="'.Urls('article', $p).'">'.TrimText(stripslashes($p->title),60).'</a></p>';
+				$posts_html .= '<p><i class="fa fa-long-arrow-right lighted" aria-hidden="true"></i> <a title="'.stripslashes($p->title).'" href="'.Urls('article', $p).'">'.TrimText(stripslashes($p->title),60).'</a></p>';
 			}
 			$row_layout->AddContentById('articles', $posts_html);
 		}else{

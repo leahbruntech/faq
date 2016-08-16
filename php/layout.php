@@ -19,9 +19,12 @@ class Layout {
 		echo $this->ReturnView();
 	}
 	
-	public function RenderViewAndExit(){
+	public function RenderViewAndExit($exit=true){
 		$this->RenderView();
-		exit();
+
+		if ($exit) {
+			exit();
+		}
 	}
 	
 	public function ReturnView(){

@@ -1,22 +1,18 @@
-<h2 style="float: left;">{{ID:header_title}}</h2>
-<div style="float: right;">
-	<form class="form-inline" method="get" action="{{ID:base_url}}search.php">
-		<div class="input-append">
-			<input class="span2 form-control" id="appendedInputButton" type="text" placeholder="{{ST:search}}" name="q" value="{{ID:q}}">
-			<button class="btn btn-default" type="submit" value="1" submit="submit">
-			<i class="fa fa-search" aria-hidden="true"></i></button>
-		</div>
-	</form>
-</div>
-<div style="clear: both;"></div>
 <div class="row">
-<div class="span12">
-<h4>{{ST:subcategories}}</h4>
-<div class="well">
-	<div class="row" style="padding-left: 30px;">{{ID:subcategories}}</div>
+<div class="col-md-6">
+	<h2>{{ID:header_title}}</h2>
 </div>
-<h4>{{ST:articles}}</h4>
-{{ID:rows}}
-{{ID:pagination}}
+</div>
+<hr>
+<div class="row">
+<div class="col-md-12">
+	<h4>{{ST:subcategories}}</h4>
+
+	{{ID:subcategories}}
+
+	<hr>
+
+	{{ID:rows}}
+	{{ID:pagination}}
 </div>
 </div>
