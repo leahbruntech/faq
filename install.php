@@ -1,6 +1,6 @@
 <?php
 
-echo 'HAHAHAHAHAHA! Bring me some food for overtime! :D';
+echo 'I never sleep for this!!!! :)';
 
 exit();
 
