@@ -27,7 +27,7 @@
 <string name="password_not_confirmed">You didn't confirm the password correctly.</string>
 <string name="date_format">Date format</string>
 <string name="date_format_required">Date format is required.</string>
-<string name="no_items">No items</string>
+<string name="no_items">Sorry, We cannot find the item searched.</string>
 <string name="add_new_category">Add New Category</string>
 <string name="category_name">Category Name</string>
 <string name="slug_for_sef_urls">Slug for SEF Urls</string>

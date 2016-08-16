@@ -2,7 +2,7 @@
 class StringResource{
 	private $string = array();
 	public function StringResource($path){
-		$file = $path . 'strings.xml';
+		$file = $path . $_SESSION['lang'].'_strings.xml';
 		if(file_exists($file))
 			$xml = simplexml_load_file($file);
 		if($xml){
