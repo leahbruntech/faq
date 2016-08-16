@@ -53,7 +53,7 @@ $categories = $db->get_results("SELECT * FROM " . TABLES_PREFIX . "categories WH
 if($categories){
 	$categories_html = '';
 	foreach($categories as $c){
-		$categories_html .= '<h4 style="float: left; width: 25%;"><a title="'.stripslashes($c->name).'" href="'.Urls('category', $c).'">'.TrimText(stripslashes($c->name), 20).'</a></h4>';	
+		$categories_html .= '<h4 style="float: left; width: 25%;"><i class="fa fa-file-text lighted" aria-hidden="true"></i> <a title="'.stripslashes($c->name).'" href="'.Urls('category', $c).'">'.TrimText(stripslashes($c->name), 20).'</a></h4>';	
 	}
 	$layout->AddContentById('subcategories', $categories_html);
 }else{

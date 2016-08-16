@@ -23,7 +23,7 @@ if($categories){
 		$categories_html = '';
 		if($children){
 			foreach($children as $ch){
-				$categories_html .= '<div class="span2"><p><a title="'.stripslashes($ch->name).'" href="'.Urls('category', $ch).'">'.TrimText(stripslashes($ch->name), 20).'</a></p></div>';	
+				$categories_html .= '<div class="span2"><p><i class="fa fa-file-text lighted" aria-hidden="true"></i> <a title="'.stripslashes($ch->name).'" href="'.Urls('category', $ch).'">'.TrimText(stripslashes($ch->name), 20).'</a></p></div>';	
 			}
 			$row_layout->AddContentById('articles_span', 'span5 ');
 		}else{
