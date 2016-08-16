@@ -10,6 +10,13 @@ body{
 	background: #F5F5F5;
 }
 
+.search-rows {
+	border-bottom: 1px solid #F5F5F5;
+	margin: 8px 0;
+}
+.search-rows:last-child {
+	border-bottom: none;
+}
 .contact-form input,
 .contact-form textarea {
 	border-radius: 0;
