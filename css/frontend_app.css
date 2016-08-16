@@ -9,7 +9,19 @@
 body{
 	background: #F5F5F5;
 }
+.footer a {
+	color: #ffffff !important;
+}
 
+.footer-bg {
+    background-image: url(../img/background-7c73b7858fe7c4bc03505fc1f7f672fd.png);
+    background-color: #2b2d2e;
+	height: 100px;
+}
+
+.footer-bg .row {
+	margin-top: 40px;
+}
 .search-rows {
 	border-bottom: 1px solid #F5F5F5;
 	margin: 8px 0;
