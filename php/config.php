@@ -9,6 +9,13 @@ if (isset($_GET["lang"])) {
     }
 }
 
+if (!isset($_SESSION["lang"])) {
+	if (!isset($_GET["lang"])) {
+		header("location: index.php?lang=en");
+	}
+}
+
+
 define('DB_NAME', 'help');
 
 /** MySQL database username */

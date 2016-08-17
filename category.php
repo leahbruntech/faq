@@ -57,7 +57,7 @@ if($categories){
 	}
 	$layout->AddContentById('subcategories', $categories_html);
 }else{
-	$layout->AddContentById('subcategories', '{{ST:no_subcategories}}');
+	// $layout->AddContentById('subcategories', '{{ST:no_subcategories}}');
 }
 
 
